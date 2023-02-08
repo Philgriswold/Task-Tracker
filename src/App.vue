@@ -10,7 +10,7 @@ import Header from "./components/Header";
 export default {
   name: "App",
   components: {
-    HelloWorld
+    Header
   }
 };
 </script>
