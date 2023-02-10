@@ -1,7 +1,7 @@
 <template>
   <div class="container">
-    <Header title="Helloo Wordddllllleee" />
-    <Tasks :tasks="tasks" />
+    <Header title="Helloo Wordddlllllrereeee" />
+    <Tasks @delete-task="deleteTask" :tasks="tasks" />
   </div>
 </template>
 
@@ -19,6 +19,11 @@ export default {
     return {
       tasks: []
     };
+  },
+  methods: {
+    deleteTask(id) {
+      console.log("task", id);
+    }
   },
   created() {
     this.tasks = [
