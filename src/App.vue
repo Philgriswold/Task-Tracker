@@ -1,10 +1,9 @@
 <template>
   <div class="container">
-    <Header @toggle-add-task="toggleAddTask" title="Helloo Wordddhihihlllllrereeee" />
+    <Header @toggle-add-task="toggleAddTask" title="2023 Task Tracker" />
     <div v-if="showAddTask">
       <AddTask @add-task="addTask" />
     </div>
-    <AddTask />
     <Tasks @toggle-reminder="toggleReminder" @delete-task="deleteTask" :tasks="tasks" />
   </div>
 </template>
@@ -18,7 +17,8 @@ export default {
   name: "App",
   components: {
     Header,
-    Tasks
+    Tasks,
+    AddTask
   },
   data() {
     return {
