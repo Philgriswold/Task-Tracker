@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <Header @toggle-add-task="toggleAddTask" title="2023 Task Tracker" />
+    <Header @toggle-add-task="toggleAddTask" title="2023 Task Tracker" :showAddTask="showAddTask" />
     <div v-if="showAddTask">
       <AddTask @add-task="addTask" />
     </div>
@@ -44,27 +44,18 @@ export default {
       );
     }
   },
-  created() {
-    this.tasks = [
-      {
-        id: 1,
-        text: "Doctors Appointment",
-        day: "March 1st at 2:30pm",
-        reminder: true
-      },
-      {
-        id: 2,
-        text: "Jammin out",
-        day: "March 11tg hat 2:30pm",
-        reminder: true
-      },
-      {
-        id: 3,
-        text: "Hangin out",
-        day: "March 2 1st at 2:30pm",
-        reminder: false
-      }
-    ];
+  async fetchTasks() {
+    const res = await fetch("https://localhost:5000/tasks");
+    const data = await res.json();
+    return data;
+  },
+  async fetchTask(id) {
+    const res = await fetch(`https://localhost:5000/tasks`);
+    const data = await res.json();
+    return data;
+  },
+  async created() {
+    this.tasks = await this.fetchTasks();
   }
 };
 </script>
