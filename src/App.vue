@@ -1,10 +1,19 @@
 <template>
-  <div class="container">
-    <Header @toggle-add-task="toggleAddTask" title="2023 Task Tracker" :showAddTask="showAddTask" />
-    <div v-if="showAddTask">
-      <AddTask @add-task="addTask" />
+  <div>
+    <div class="container">
+      <Header
+        @toggle-add-task="toggleAddTask"
+        title="2023 Task Tracker"
+        :showAddTask="showAddTask"
+      />
+      <div v-if="showAddTask">
+        <AddTask @add-task="addTask" />
+      </div>
+      <Tasks @toggle-reminder="toggleReminder" @delete-task="deleteTask" :tasks="tasks" />
     </div>
-    <Tasks @toggle-reminder="toggleReminder" @delete-task="deleteTask" :tasks="tasks" />
+    <div class="footer">
+      <Footer name="Phil Griswold" year="2023" />
+    </div>
   </div>
 </template>
 
@@ -12,13 +21,15 @@
 import Header from "./components/Header";
 import Tasks from "./components/Tasks";
 import AddTask from "./components/AddTask";
+import Footer from "./components/Footer";
 
 export default {
   name: "App",
   components: {
     Header,
     Tasks,
-    AddTask
+    AddTask,
+    Footer
   },
   data() {
     return {
@@ -45,12 +56,12 @@ export default {
     }
   },
   async fetchTasks() {
-    const res = await fetch("http://localhost:5000/tasks");
+    const res = await fetch("api/tasks");
     const data = await res.json();
     return data;
   },
   async fetchTask(id) {
-    const res = await fetch(`http://localhost:5000/tasks`);
+    const res = await fetch(`api/tasks/${id}`);
     const data = await res.json();
     return data;
   },
@@ -69,6 +80,13 @@ export default {
 }
 body {
   font-family: "Poppins", sans-serif;
+}
+
+.footer {
+  display: flex;
+  justify-content: center;
+  font-size: 12px;
+  color: red;
 }
 .container {
   max-width: 500px;

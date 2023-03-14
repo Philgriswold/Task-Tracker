@@ -16,7 +16,7 @@
       "id": "3",
       "text": "Hangin out",
       "day": "March 2 1st at 2:30pm",
-      "reminder": false
+      "reminder": true
     }
   ]
 }

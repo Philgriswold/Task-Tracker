@@ -4,7 +4,6 @@
       <label>Task</label>
       <input type="text" v-model="text" name="text" placeholder="Add Task" />
     </div>
-    {{ text }}
     <div class="form-control">
       <label>Day & Time</label>
       <input type="text" v-model="day" name="day" placeholder="Add Day & Time" />
@@ -36,13 +35,13 @@ export default {
         return;
       }
       const newTask = {
-        // id: Math.floor(Math.random() * 100000),
+        id: Math.floor(Math.random() * 100000),
         text: this.text,
         day: this.day,
         reminder: this.reminder
       };
 
-      console.log(newTask);
+      // console.log(newTask);
 
       this.$emit("add-task", newTask);
       this.text = "";
