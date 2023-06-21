@@ -1,4 +1,4 @@
-<template>
+ <template>
   <div>
     <div :key="task.id" v-for="task in tasks">
       <Task
