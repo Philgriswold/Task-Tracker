@@ -4,17 +4,13 @@
     <Button
       @btn-click="$emit('toggle-add-task')"
       :text="showAddTask ? 'Close' : 'Add Task '"
-
-      :color="showAddTask? 'orange' : 'black'"
-
+      :color="showAddTask? 'brown' : 'brown'"
     />
   </header>
 </template>
 
 
   <script>
-
-
 import Button from "./Button";
 
 export default {
@@ -31,14 +27,11 @@ export default {
 
 
   <style scoped>
-
-
 header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
 }
-
 </style>
 
